@@ -1,5 +1,7 @@
+from __future__ import absolute_import, division, print_function
 import ast
 from jaspyx.context.module import ModuleContext
+from jaspyx.compat import basestring
 
 
 class BaseVisitor(ast.NodeVisitor):
@@ -110,6 +112,9 @@ class BaseVisitor(ast.NodeVisitor):
 
     def visit_Pass(self, node):
         pass
+
+    def visit_NameConstant(self, node):
+        self.visit(ast.Name(str(node.value), ast.Load()))
 
     def generic_visit(self, node):
         """

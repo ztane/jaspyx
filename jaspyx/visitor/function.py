@@ -1,7 +1,9 @@
+from __future__ import absolute_import, division, print_function
 import ast
 from jaspyx.ast_util import ast_call, ast_load
 from jaspyx.context.function import FunctionContext
 from jaspyx.visitor import BaseVisitor
+from jaspyx.compat import get_arg_id
 
 
 class Function(BaseVisitor):
@@ -9,7 +11,7 @@ class Function(BaseVisitor):
         if node.name:
             self.stack[-1].scope.declare(node.name)
 
-        args = [arg.id for arg in node.args.args]
+        args = [get_arg_id(arg) for arg in node.args.args]
         if node.args.kwarg is not None:
             raise Exception('**kwargs not supported')
 

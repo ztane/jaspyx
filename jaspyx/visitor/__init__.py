@@ -1,3 +1,4 @@
+from __future__ import absolute_import, division, print_function
 from jaspyx.visitor.base_visitor import BaseVisitor
 from jaspyx.visitor.break_ import Break
 from jaspyx.visitor.class_ import Class

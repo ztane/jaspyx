@@ -1,3 +1,4 @@
+from __future__ import absolute_import, division, print_function
 class Scope(object):
     def __init__(self, parent=None):
         self.parent = parent

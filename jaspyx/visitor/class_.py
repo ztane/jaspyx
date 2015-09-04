@@ -1,7 +1,9 @@
+from __future__ import absolute_import, division, print_function
 import ast
 from jaspyx.ast_util import ast_load, ast_call, ast_store
 from jaspyx.context.class_ import ClassContext
 from jaspyx.visitor import BaseVisitor
+from jaspyx.compat import arguments, FunctionDef
 
 
 class Class(BaseVisitor):
@@ -9,9 +11,9 @@ class Class(BaseVisitor):
         if len(node.bases) > 1:
             raise Exception('Multiple inheritance not supported')
 
-        self.visit(ast.FunctionDef(
+        self.visit(FunctionDef(
             node.name,
-            ast.arguments([], None, None, []),
+            arguments([], None, None, []),
             [
                 ast.If(
                     ast.UnaryOp(
@@ -95,9 +97,9 @@ class Class(BaseVisitor):
             self.visit(
                 ast.Assign(
                     [ast_store('__bind__')],
-                    ast.FunctionDef(
+                    FunctionDef(
                         '',
-                        ast.arguments([ast_load('self')], None, None, []),
+                        arguments([ast_load('self')], None, None, []),
                         [
                             ast.For(
                                 ast_store('i'),
@@ -154,15 +156,15 @@ class Class(BaseVisitor):
                 ast.Assign(
                     [ast_store(node.name, 'prototype')],
                     ast_call(
-                        ast.FunctionDef(
+                        FunctionDef(
                             '',
-                            ast.arguments([], None, None, []),
+                            arguments([], None, None, []),
                             [
                                 ast.Assign(
                                     [ast_store('tmp')],
-                                    ast.FunctionDef(
+                                    FunctionDef(
                                         '',
-                                        ast.arguments([], None, None, []),
+                                        arguments([], None, None, []),
                                         [],
                                         []
                                     )

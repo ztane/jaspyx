@@ -1,3 +1,4 @@
+from __future__ import absolute_import, division, print_function
 import ast
 from jaspyx.ast_util import ast_store
 from jaspyx.tests.visitor.v8_helper import V8Helper

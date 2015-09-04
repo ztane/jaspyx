@@ -1,3 +1,4 @@
+from __future__ import absolute_import, division, print_function
 import ast
 from jaspyx.ast_util import ast_load, ast_call
 from jaspyx.visitor import BaseVisitor
@@ -24,7 +25,7 @@ class BinOp(BaseVisitor):
             def f_op(self, left, right):
                 self.group([left, op, right])
             return f_op
-        exec 'BinOp_%s = gen_op("%s")' % (key, value)
+        exec('BinOp_%s = gen_op("%s")' % (key, value))
 
     def BinOp_Pow(self, left, right):
         pow_func = ast_load('Math.pow')

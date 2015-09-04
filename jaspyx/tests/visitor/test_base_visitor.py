@@ -1,3 +1,4 @@
+from __future__ import absolute_import, division, print_function
 import ast
 from nose.tools import raises
 from jaspyx.context.module import ModuleContext

@@ -1,3 +1,4 @@
+from __future__ import absolute_import, division, print_function
 import ast
 from jaspyx.visitor import BaseVisitor
 
@@ -39,4 +40,4 @@ class AugAssign(BaseVisitor):
                 )
                 self.finish()
             return f_op
-        exec 'AugAssign_%s = gen_op("%s")' % (key, value)
+        exec('AugAssign_%s = gen_op("%s")' % (key, value))

@@ -1,3 +1,4 @@
+from __future__ import absolute_import, division, print_function
 import ast
 from jaspyx.ast_util import ast_call, ast_load
 from jaspyx.visitor import BaseVisitor
@@ -34,7 +35,7 @@ class Compare(BaseVisitor):
             def f_op(self, left, comparator):
                 self.group([left, op, comparator])
             return f_op
-        exec 'CmpOp_%s = gen_op("%s")' % (key, value)
+        exec('CmpOp_%s = gen_op("%s")' % (key, value))
 
     def CmpOp_In(self, left, comparator):
         self.visit(ast_call(
